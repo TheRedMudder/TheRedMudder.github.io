@@ -29,7 +29,7 @@ def replaceAllfolder(filetype,old_text,new_text):
     replacefolder(filetype, old_text, new_text)
 
 # Fix Host
-replaceAllfolder(".html",'localhost','ronjdias.github.io');
+replaceAllfolder(".html",'localhost','theredmudder.github.io');
 #Removes Extra Index Files
 checkforgarbage = glob.glob("*.html");
 for checkgarb in checkforgarbage:
