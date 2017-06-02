@@ -2,6 +2,7 @@ import os
 import errno
 import shutil
 import glob
+import htmlmin
 def silentremove(filename):
     try:
         os.remove(filename)
@@ -39,4 +40,25 @@ checkforgarbage = glob.glob("*.html");
 for checkgarb in checkforgarbage:
     if (("index" in checkgarb) and (len(checkgarb)>10)):
         silentremove(checkgarb);
-
+#Minify Everything
+def minitfile(filename,filetype):
+    f1 = open(filename + filetype, 'r')
+    f2 = open(filename + '_temp'+filetype, 'w')
+    # Minify Threw Html
+    htmlstr = f1.read();
+    htmlout=htmlmin.minify((htmlstr), True, False, False, True, False, True, False, (u'pre', u'textarea'),'pre')
+    f1.close();
+    f2.write(htmlout);
+    f2.close()
+    shutil.copy(filename + '_temp'+filetype, filename +filetype)
+    silentremove(filename + '_temp'+filetype)
+def minitfolder(filetype,foldersub=""):
+    replacequefiles = glob.glob(foldersub+"*" + filetype)
+    for replaceque in replacequefiles:
+        minitfile(replaceque[:-len(filetype)], filetype);
+def minitAllfolder(filetype):
+    allfoldersub=next(os.walk('.'))[1]
+    for foldersub in allfoldersub:
+        minitfolder(filetype, "./" +foldersub+"/");
+    minitfolder(filetype,)
+minitAllfolder('.html');
