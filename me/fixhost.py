@@ -3,6 +3,7 @@ import errno
 import shutil
 import glob
 import htmlmin
+import codecs;
 def silentremove(filename):
     try:
         os.remove(filename)
@@ -52,8 +53,8 @@ replaceAllfolder(".html",'http://theredmudder.github.io/me/wp-content/uploads/20
 
 #Minify Everything
 def minitfile(filename,filetype):
-    f1 = open(filename + filetype, 'r')
-    f2 = open(filename + '_temp'+filetype, 'w')
+    f1 = codecs.open(filename + filetype, 'r',"utf-8")
+    f2 = codecs.open(filename + '_temp'+filetype, 'w',"utf-8")
     # Minify Threw Html
     htmlstr = f1.read();
     htmlout=htmlmin.minify((htmlstr), True, False, False, True, False, True, False, (u'pre', u'textarea'),'pre')
@@ -71,4 +72,4 @@ def minitAllfolder(filetype):
     for foldersub in allfoldersub:
         minitfolder(filetype, "./" +foldersub+"/");
     minitfolder(filetype,)
-# minitAllfolder('.html');
+minitAllfolder('.html');
