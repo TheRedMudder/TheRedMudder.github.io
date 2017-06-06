@@ -71,4 +71,4 @@ def minitAllfolder(filetype):
     for foldersub in allfoldersub:
         minitfolder(filetype, "./" +foldersub+"/");
     minitfolder(filetype,)
-minitAllfolder('.html');
+# minitAllfolder('.html');
