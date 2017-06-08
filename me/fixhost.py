@@ -45,11 +45,15 @@ for checkgarb in checkforgarbage:
         silentremove(checkgarb);
 
 # Fix Host
-replaceAllfolder(".html",'localhost','theredmudder.github.io');
+replaceAllfolder(".html",'localhost','ronjdias.com');
 #Fix Dynamic Problem
 replaceAllfolder(".html",'?ver=4.7.5','');
+replaceAllfolder(".html",'?ver=2.5.3','');
+replaceAllfolder(".html",'?ver=1.0.5','');
+replaceAllfolder(".html",'?ver=1.4.1','');
+replaceAllfolder(".html",'?ver=1.12.4','');
 #Fixes Broken Image
-replaceAllfolder(".html",'http://theredmudder.github.io/me/wp-content/uploads/2016/09/face.jpg','https://demo.themegrill.com/flash-one-page/wp-content/uploads/sites/93/2016/09/face.jpg');
+replaceAllfolder(".html",'http://ronjdias.com/me/wp-content/uploads/2016/09/face.jpg','https://demo.themegrill.com/flash-one-page/wp-content/uploads/sites/93/2016/09/face.jpg');
 
 #Minify Everything
 def minitfile(filename,filetype):
