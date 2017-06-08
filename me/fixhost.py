@@ -67,13 +67,24 @@ def minitfile(filename,filetype):
     f2.close()
     shutil.copy(filename + '_temp'+filetype, filename +filetype)
     silentremove(filename + '_temp'+filetype)
+    print(filename +filetype+"Done");
 def minitfolder(filetype,foldersub=""):
     replacequefiles = glob.glob(foldersub+"*" + filetype)
     for replaceque in replacequefiles:
         minitfile(replaceque[:-len(filetype)], filetype);
-def minitAllfolder(filetype):
-    allfoldersub=next(os.walk('.'))[1]
+# def minitAllfolder(filetype):
+#     allfoldersub=next(os.walk('.'))[1]
+#     for foldersub in allfoldersub:
+#         minitfolder(filetype, "./" +foldersub+"/");
+#     minitfolder(filetype,)
+def minitAllfolder(filetype,walk_dir='.',recursive=True):
+    allfoldersub=next(os.walk(walk_dir))[1]
+    print(allfoldersub);
     for foldersub in allfoldersub:
-        minitfolder(filetype, "./" +foldersub+"/");
-    minitfolder(filetype,)
+        print("Minify Currently in "+foldersub);
+        minitfolder(filetype, walk_dir+"/" +foldersub+"/");
+        if (recursive==True):
+            minitAllfolder(filetype, walk_dir+"/" +foldersub)
+    if walk_dir == '.':
+        minitfolder(filetype, )
 minitAllfolder('.html');
