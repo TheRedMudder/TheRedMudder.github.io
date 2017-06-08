@@ -55,7 +55,9 @@ replaceAllfolder(".html",'?ver=1.12.4','');
 #Fixes Broken Image
 replaceAllfolder(".html",'http://www.ronjdias.com/me/wp-content/uploads/2016/09/face.jpg','https://demo.themegrill.com/flash-one-page/wp-content/uploads/sites/93/2016/09/face.jpg');
 #Fix Auto Optomize
-replaceAllfolder(".css",'localhost/me','demo.themegrill.com/flash-one-page');
+replaceAllfolder(".css",'localhost/me','www.ronjdias.com/fa');
+replaceAllfolder(".css",'?v=4.6.3','');
+
 #Minify Everything
 def minitfile(filename,filetype):
     f1 = codecs.open(filename + filetype, 'r',"utf-8")
