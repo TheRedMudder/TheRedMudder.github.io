@@ -11,8 +11,8 @@ def silentremove(filename):
         if e.errno != errno.ENOENT: # errno.ENOENT = no such file or directory
             raise # re-raise exception if a different error occurred
 def replacewith(filename,filetype,old_text,new_text):
-    f1 = open(filename + filetype, 'r', encoding='iso-8859-1')
-    f2 = open(filename + '_temp'+filetype, 'w', encoding='utf-8')
+    f1 = codecs.open(filename + filetype, 'r',"utf-8")
+    f2 = codecs.open(filename + '_temp'+filetype, 'w',"utf-8")
     for line in f1:
         f2.write(line.replace(old_text, new_text))
     f1.close()
